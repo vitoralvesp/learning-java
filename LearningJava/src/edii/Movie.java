@@ -8,9 +8,21 @@ public class Movie {
 	
 	// Constructors
 	public Movie() {
-		title = "Default Movie";
-		year = 2000;
-		rate = 8.5f;
+		title = "N/A";
+		year = 0;
+		rate = 0.0f;
+	}
+	
+	public Movie(String title) {
+		this.title = title;
+	}
+	
+	public Movie(short year) {
+		this.year = year;
+	}
+	
+	public Movie(float rate) {
+		this.rate = rate;
 	}
 	
 	public Movie(String title, short year, float rate) {
@@ -33,12 +45,34 @@ public class Movie {
 		return rate;
 	}
 	
+	/*
 	public Object[] getAll() {
 		return new Object[] { title, year, rate };
 	}
+	*/
 	
 	
 	// Setters
+	public void setTitle(String new_title) {
+		this.title = new_title;
+	}
+	
+	public void setYear(short new_year) {
+		this.year = new_year;
+	}
+	
+	public void setRate(float new_rate) {
+		this.rate = new_rate;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "Title: " + getTitle() + " (" + getYear() + ") " + getRate();
+	}
+	
+	
+	
 	
 
 }
