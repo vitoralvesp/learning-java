@@ -4,5 +4,5 @@
 /**
  * 
  */
-module Learning_Java {
+module Tree {
 }
