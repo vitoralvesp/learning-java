@@ -64,7 +64,21 @@ public class Node<Data> {
 	// Methods
 	@Override
 	public String toString() {
-		return "data: " + data + " | parent: " + parent + " | left: " + left + " | right: " + right;
+		return (data != null ? data.toString() : "null");
+	}
+	
+	public int isRoot() {
+		return (parent == null ? 1 : 0);
+	}
+	
+	public int isLeaf() {
+		return (right == null && left == null ? 1 : 0);
+	}
+	
+	public int getDegree() {
+		if (right != null && left != null) return 2;
+		else if (right != null || left != null) return 1;
+		else return 0;
 	}
 	
 	
