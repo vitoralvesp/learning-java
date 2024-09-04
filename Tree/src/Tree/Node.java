@@ -8,18 +8,11 @@ public class Node<Data> {
 	Node<Data> right;
 	
 	// Constructor
-	Node() { 
-		data = null;
+	Node(Data data) { 
+		this.data = data;
 		parent = null;
 		left = null;
 		right = null;
-	}
-	
-	public Node(Data data, Node<Data> parent, Node<Data> left, Node<Data> right) { 
-		this.data = data;
-		this.parent = parent;
-		this.left = left;
-		this.right = right;
 	}
 	
 	// Setters
@@ -45,19 +38,19 @@ public class Node<Data> {
 	}
 	
 	// Getters
-	public <Data extends Node<Data>> Data getData(Data data) {
+	public Data getData() {
 		return data;
 	}
 	
-	public <Data extends Node<Data>> Data getParent(Data parent) {
+	public Node<Data> getParent() {
 		return parent;
 	}
 	
-	public <Data extends Node<Data>> Data getLeft(Data left) {
+	public Node<Data> getLeft() {
 		return left;
 	}
 	
-	public <Data extends Node<Data>> Data getRight(Data right) {
+	public Node<Data> getRight() {
 		return right;
 	}
 	
@@ -67,12 +60,12 @@ public class Node<Data> {
 		return (data != null ? data.toString() : "null");
 	}
 	
-	public int isRoot() {
-		return (parent == null ? 1 : 0);
+	public boolean isRoot() {
+		return parent == null;
 	}
 	
-	public int isLeaf() {
-		return (right == null && left == null ? 1 : 0);
+	public boolean isLeaf() {
+		return right == null && left == null;
 	}
 	
 	public int getDegree() {
@@ -81,6 +74,22 @@ public class Node<Data> {
 		else return 0;
 	}
 	
+	public int getLevel() {
+		if (isRoot()) return 0;
+		else return parent.getLevel() + 1;
+	}
+	
+	public int getHeight() {
+		
+		int h;
+		if (isLeaf()) return h = 0;
+		else if (left == null && right != null) h = 1 + right.getHeight();
+		else if (right == null && left != null) h = 1 + left.getHeight();
+		else h = (left.getHeight() > right.getHeight()) ? 1 + left.getHeight() : 1 + right.getHeight();
+		return h;
+		
+		
+	}
 	
 	
 }
